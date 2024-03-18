@@ -6,7 +6,6 @@ import {
 } from "@farcaster/core";
 import { hexToBytes } from "@noble/hashes/utils";
 
-const NETWORK = FarcasterNetwork.MAINNET;
 const FID = process.env.FID ? parseInt(process.env.FID) : 0;
 const SIGNER = process.env.PRIVATE_KEY || "";
 
@@ -14,7 +13,7 @@ async function sendCast(message: string, parentUrl: string) {
   try {
     const dataOptions = {
       fid: FID,
-      network: NETWORK,
+      network: FarcasterNetwork.MAINNET,
     };
 
     const privateKeyBytes = hexToBytes(SIGNER.slice(2));
