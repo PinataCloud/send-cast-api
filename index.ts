@@ -11,6 +11,7 @@ const SIGNER = process.env.PRIVATE_KEY || "";
 
 async function sendCast(message: string, parentUrl: string) {
   try {
+
     const dataOptions = {
       fid: FID,
       network: FarcasterNetwork.MAINNET,
@@ -30,7 +31,6 @@ async function sendCast(message: string, parentUrl: string) {
 
     const castAddReq = await makeCastAdd(castBody, dataOptions, ed25519Signer);
     const castAdd: any = castAddReq._unsafeUnwrap();
-
     const messageBytes = Buffer.from(Message.encode(castAdd).finish());
 
     const castRequest = await fetch(
